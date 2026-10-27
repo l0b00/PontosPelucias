@@ -3,6 +3,77 @@
 Site-catálogo de amigurumis e pelúcias de crochê feitos à mão pela artesã Carol.
 Projeto integrador do 2º semestre — **Laís, Aline, Vitor e Matheus**.
 
+## Subir o site
+
+Precisa do **XAMPP** instalado (traz o Apache e o MariaDB/MySQL). No **PowerShell**,
+dentro da pasta do projeto:
+
+```powershell
+# 1. Deixar o projeto visível para o Apache (pule se já clonou dentro de htdocs)
+New-Item -ItemType Junction -Path 'C:\xampp\htdocs\pelucias' -Target $PWD
+
+# 2. Subir o Apache e o MariaDB
+& cmd /c 'start "Apache"  /MIN C:\xampp\apache\bin\httpd.exe'
+& cmd /c 'start "MariaDB" /MIN C:\xampp\mysql\bin\mysqld.exe --defaults-file=C:\xampp\mysql\bin\my.ini --standalone'
+
+# 3. Criar o banco e os dados de exemplo (espere uns 5 s depois do passo 2)
+& cmd /c '"C:\xampp\mysql\bin\mysql.exe" -u root < database\schema.sql'
+& cmd /c '"C:\xampp\mysql\bin\mysql.exe" -u root < database\seed.sql'
+```
+
+Pronto:
+
+| | |
+|---|---|
+| Site | <http://localhost/pelucias/> |
+| Painel | <http://localhost/pelucias/admin/> |
+| E-mail | `admin@pelucias.com` |
+| Senha | `admin123` |
+
+Para conferir que subiu mesmo:
+
+```powershell
+(Invoke-WebRequest 'http://localhost/pelucias/' -UseBasicParsing).StatusCode            # 200
+& "C:\xampp\mysql\bin\mysql.exe" -u root pelucias -e "SELECT COUNT(*) FROM produtos;"   # 10
+```
+
+### Detalhes que economizam tempo
+
+- **O passo 3 recomeça o banco do zero** (`DROP TABLE` + `TRUNCATE`). Em máquina nova é
+  exatamente o que se quer; em máquina que já está em uso, **pule** — ele apaga tudo o
+  que foi cadastrado pelo painel.
+- **O `& cmd /c` dos passos 2 e 3 não é enfeite.** O `<` não existe no PowerShell 5.1
+  (dá erro de sintaxe), e o `mysqld` iniciado com `Start-Process` morre junto com o
+  shell que o chamou. O `start` do `cmd` resolve os dois casos.
+- Não use `Get-Content arquivo.sql | mysql.exe`: a conversão de texto estraga os acentos
+  do `seed.sql`.
+- O passo 1 falha se `C:\xampp\htdocs\pelucias` já existir. Apague a pasta (ou a junção
+  antiga) antes de repetir.
+- Se usar outro nome de pasta dentro de `htdocs`, ajuste `URL_BASE` em
+  `includes/config.php`. Com o nome `pelucias`, nada precisa ser editado.
+- ⚠️ **Troque a senha no primeiro acesso**, em **Alterar senha** dentro do painel. A
+  senha padrão está escrita aqui e no `seed.sql` — quem vê o repositório a conhece.
+
+### Trocar os dados da Carol
+
+`includes/config.php` é o **único** arquivo que precisa ser editado:
+
+```php
+define('BD_NOME', 'pelucias');        // nome do banco
+define('BD_USUARIO', 'root');         // padrão do XAMPP
+define('BD_SENHA', '');               // padrão do XAMPP: vazio
+
+define('URL_BASE', '/pelucias');      // pasta dentro do htdocs
+
+define('WHATSAPP', '5511999999999');  // número da Carol: só dígitos, com 55 + DDD
+define('INSTAGRAM', 'ponntosepelucias');
+define('PIX_CHAVE', 'carol@email.com');
+```
+
+---
+
+## O projeto
+
 O site tem duas partes:
 
 - **Catálogo público** — qualquer pessoa acessa, navega por categorias e coleções,
@@ -25,81 +96,6 @@ encomenda pelo WhatsApp e paga por **Pix**, combinado direto com a Carol.
 
 O site é **mobile-first**: o CSS base é o do celular e as telas maiores entram por
 `@media`. Foi desenhado a partir do protótipo em `prototipo_pelucias.pdf`.
-
----
-
-## Instalação no XAMPP, passo a passo
-
-### 1. Instalar o XAMPP
-
-Baixe em <https://www.apachefriends.org> e instale. Abra o **XAMPP Control Panel**
-e clique em **Start** no **Apache** e no **MySQL**.
-
-### 2. Colocar o projeto na pasta certa
-
-O Apache só enxerga o que está dentro de `htdocs`. Copie a pasta do projeto para lá
-com o nome **pelucias**:
-
-```
-C:\xampp\htdocs\pelucias\
-```
-
-> Quem trabalha com o repositório clonado em outro lugar (por exemplo
-> `Desktop\Projetos\PontosPelucias`) pode copiar a pasta para dentro de `htdocs`
-> sempre que for testar, ou clonar o repositório direto dentro de `htdocs`.
-> Se você usar outro nome de pasta, ajuste a constante `URL_BASE` no passo 4.
->
-> **Dica para não ficar copiando a pasta toda hora:** dá para criar um atalho de
-> verdade (junção), e aí o que você editar no repositório já vale no servidor na
-> hora. No PowerShell, com o caminho do seu clone:
->
-> ```powershell
-> New-Item -ItemType Junction -Path 'C:\xampp\htdocs\pelucias' -Target 'C:\caminho\do\seu\PontosPelucias'
-> ```
-
-### 3. Criar o banco de dados
-
-1. Abra <http://localhost/phpmyadmin>.
-2. Clique em **Importar** → **Escolher arquivo** → selecione `database/schema.sql`
-   → **Executar**. Isso cria o banco `pelucias` e todas as tabelas.
-3. Repita a importação, agora com `database/seed.sql`. Isso põe as 5 categorias,
-   2 coleções, 3 banners, 10 produtos de exemplo e o usuário administrador.
-
-> Os dois arquivos podem ser importados de novo quando quiser: eles apagam os dados
-> antigos e recomeçam do zero. **Importar o `seed.sql` apaga tudo o que foi
-> cadastrado pelo painel.**
-
-### 4. Conferir as configurações
-
-Abra `includes/config.php`. É o **único** arquivo que precisa ser editado:
-
-```php
-define('BD_NOME', 'pelucias');        // nome do banco
-define('BD_USUARIO', 'root');         // padrão do XAMPP
-define('BD_SENHA', '');               // padrão do XAMPP: vazio
-
-define('URL_BASE', '/pelucias');      // pasta dentro do htdocs
-
-define('WHATSAPP', '5511999999999');  // número da Carol: só dígitos, com 55 + DDD
-define('INSTAGRAM', 'ponntosepelucias');
-define('PIX_CHAVE', 'carol@email.com');
-```
-
-### 5. Abrir o site
-
-- Site: <http://localhost/pelucias/>
-- Painel: <http://localhost/pelucias/admin/>
-
-### 6. Entrar no painel
-
-| | |
-|---|---|
-| E-mail | `admin@pelucias.com` |
-| Senha | `admin123` |
-
-> ⚠️ **Troque esta senha no primeiro acesso**, em **Alterar senha** dentro do painel.
-> A senha padrão está escrita aqui no README e no `seed.sql`, ou seja, qualquer
-> pessoa que veja o repositório a conhece.
 
 ---
 
@@ -290,8 +286,9 @@ Os dados de teste foram apagados depois e o banco está no estado do `seed.sql`.
 
 | Sintoma | Causa provável | O que fazer |
 |---|---|---|
-| O Apache não inicia no XAMPP | Outro programa já está usando a porta 80 (IIS, Skype, Caddy, nginx, Docker) | No PowerShell: `Get-NetTCPConnection -LocalPort 80 -State Listen` mostra o PID; parar esse programa, **ou** trocar `Listen 80` para `Listen 8080` em `xampp\apache\conf\httpd.conf` e usar `http://localhost:8080/pelucias/` |
-| "Não foi possível conectar ao banco de dados" | MySQL desligado ou banco não importado | Dar **Start** no MySQL no XAMPP e importar `schema.sql` e `seed.sql` |
+| O Apache não sobe | Outro programa já está usando a porta 80 (IIS, Skype, Caddy, nginx, Docker) | No PowerShell: `Get-NetTCPConnection -LocalPort 80 -State Listen` mostra o PID; parar esse programa, **ou** trocar `Listen 80` para `Listen 8080` em `xampp\apache\conf\httpd.conf` e usar `http://localhost:8080/pelucias/` |
+| "Não foi possível conectar ao banco de dados" | MariaDB desligado ou banco não importado | Repetir os passos 2 e 3 de **Subir o site**. Para ver se ele está no ar: `Get-NetTCPConnection -LocalPort 3306 -State Listen` |
+| O MariaDB sobe e cai sozinho | Foi iniciado com `Start-Process`, e ele morre com o shell | Usar o `& cmd /c 'start ...'` do passo 2. O motivo fica no log `C:\xampp\mysql\data\mysql_error.log` |
 | O site aparece sem cor nenhuma, e os links dão 404 | `URL_BASE` não bate com o nome da pasta | Ajustar `URL_BASE` em `includes/config.php` (se a pasta é `htdocs/pelucias`, o valor é `/pelucias`) |
 | As imagens de exemplo não aparecem | A pasta `uploads/` não foi copiada junto | Copiar a pasta inteira, com as subpastas `produtos/`, `banners/`, `colecoes/` e `categorias/` |
 | O upload diz "Formato não aceito" com um JPG de verdade | Extensão `fileinfo` desligada no PHP | Em `php.ini`, tirar o `;` de `extension=fileinfo` e reiniciar o Apache |
