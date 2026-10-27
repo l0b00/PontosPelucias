@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Icone que aparece na aba do navegador: um novelo de la rosa. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <rect width="64" height="64" rx="14" fill="#fff3f7"/>
+  <circle cx="30" cy="30" r="18" fill="#f7b6cb"/>
+  <g fill="none" stroke="#e8789f" stroke-width="2.6" stroke-linecap="round">
+    <path d="M16 22c10 3 18 10 22 20"/>
+    <path d="M24 14c11 5 19 14 23 25"/>
+    <path d="M42 17c-6 7-9 16-8 25"/>
+    <path d="M44 44l10 10"/>
+  </g>
+</svg>

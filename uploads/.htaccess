@@ -1,0 +1,39 @@
+# ---------------------------------------------------------------------------
+# Seguranca da pasta de uploads
+#
+# Se alguem conseguir enviar um arquivo .php disfarcado de imagem, este
+# arquivo impede que o Apache EXECUTE esse arquivo. Ele so pode ser baixado
+# como texto, nunca rodado como programa.
+#
+# Nao apague este arquivo. Ele vale para esta pasta e todas as de dentro.
+# ---------------------------------------------------------------------------
+
+# Desliga o interpretador de PHP aqui dentro.
+# Os <IfModule> evitam erro 500 em servidores que rodam PHP de outro jeito
+# (sem o modulo do Apache). No XAMPP o modulo usado e o mod_php.
+<IfModule mod_php.c>
+    php_flag engine off
+</IfModule>
+<IfModule mod_php7.c>
+    php_flag engine off
+</IfModule>
+<IfModule mod_php8.c>
+    php_flag engine off
+</IfModule>
+
+# Apache 2.4: nega o acesso a qualquer arquivo de codigo
+<FilesMatch "\.(php|php3|php4|php5|php7|php8|phtml|phar|pl|py|cgi|asp|aspx|sh|htaccess)$">
+    Require all denied
+</FilesMatch>
+
+# Garante que nada aqui seja tratado como script pelo servidor
+RemoveHandler .php .phtml .php3 .php4 .php5 .php7 .php8 .phar
+RemoveType .php .phtml .php3 .php4 .php5 .php7 .php8 .phar
+
+# Impede que o navegador "adivinhe" o tipo do arquivo
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+</IfModule>
+
+# Nao deixa listar o conteudo da pasta pelo navegador
+Options -Indexes -ExecCGI

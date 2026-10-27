@@ -1,0 +1,23 @@
+# ---------------------------------------------------------------------------
+# Seguranca da raiz do site
+#
+# O Apache entrega qualquer arquivo que esteja dentro da pasta do site, nao so
+# os .php. Sem este arquivo, qualquer pessoa poderia baixar pelo navegador:
+#
+#   /database/seed.sql  -> que tem o hash da senha do administrador
+#   /.git/config        -> e, com ele, todo o historico e o codigo-fonte
+#
+# Os arquivos .php nao precisam ser protegidos: o Apache executa e manda so o
+# resultado. Por isso includes/config.php nunca mostra a senha do banco.
+# ---------------------------------------------------------------------------
+
+# Esconde a pasta do git (responde 404, como se nao existisse)
+RedirectMatch 404 /\.git(/|$)
+
+# Nao deixa baixar banco de dados, documentacao e logs
+<FilesMatch "\.(sql|md|log|ini|bak)$">
+    Require all denied
+</FilesMatch>
+
+# Nao deixa listar o conteudo das pastas pelo navegador
+Options -Indexes

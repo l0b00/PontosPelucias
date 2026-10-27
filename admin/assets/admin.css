@@ -1,0 +1,437 @@
+/* ===========================================================================
+   Painel da Carol - estilo proprio
+
+   Carregado DEPOIS do style.css do site, entao reaproveita as mesmas cores
+   (as variaveis de :root) e so acrescenta o que e do painel.
+
+     1. Tela de login
+     2. Estrutura do painel (menu lateral + conteudo)
+     3. Tabelas de listagem
+     4. Formularios do painel
+     5. Cartoes do inicio (dashboard)
+     6. Telas maiores
+   =========================================================================== */
+
+/* --- 1. Tela de login --------------------------------------------------- */
+.tela-login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 24px 16px;
+}
+
+.caixa-login {
+  background: var(--branco);
+  border: 1px solid var(--rosa-claro);
+  border-radius: var(--raio-grande);
+  box-shadow: var(--sombra-forte);
+  padding: 28px 22px;
+  width: 100%;
+  max-width: 380px;
+  text-align: center;
+}
+
+.caixa-login h1 {
+  font-size: 1.3rem;
+  margin-top: 18px;
+}
+
+.caixa-login .campo {
+  text-align: left;
+}
+
+.login-ajuda {
+  color: var(--texto-suave);
+  font-size: 0.88rem;
+  margin-top: 0;
+}
+
+.login-voltar {
+  margin: 16px 0 0;
+  font-size: 0.85rem;
+}
+
+/* --- 2. Estrutura do painel --------------------------------------------- */
+.painel {
+  background: var(--rosa-fundo);
+}
+
+/* No celular o menu comeca escondido (herda .menu-lateral do style.css). */
+.painel-menu {
+  background: var(--branco);
+  border-right: 1px solid var(--rosa-claro);
+}
+
+.painel-logo {
+  display: block;
+  font-family: var(--fonte-titulo);
+  font-size: 1.1rem;
+  color: var(--rosa-principal);
+  margin-bottom: 2px;
+}
+
+.painel-usuario {
+  font-size: 0.8rem;
+  color: var(--texto-suave);
+  margin: 0 0 16px;
+}
+
+.painel-menu a.ativo {
+  color: var(--rosa-principal);
+  background: var(--rosa-fundo);
+  border-radius: 10px;
+  padding-left: 10px;
+}
+
+.painel-menu a.sair {
+  color: #a02847;
+}
+
+.painel-topo {
+  background: var(--branco);
+  box-shadow: var(--sombra);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  position: sticky;
+  top: 0;
+  z-index: 40;
+}
+
+.painel-topo h1 {
+  font-size: 1.1rem;
+  margin: 0;
+  flex: 1;
+}
+
+.painel-ver-site {
+  font-size: 0.8rem;
+  white-space: nowrap;
+  border: 1px solid var(--rosa-medio);
+  border-radius: 999px;
+  padding: 6px 12px;
+}
+
+.painel-corpo {
+  padding: 16px 14px 32px;
+  max-width: 1100px;
+}
+
+.painel-rodape {
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--texto-suave);
+  padding: 16px;
+}
+
+/* Barra de acoes acima das listagens */
+.acoes-topo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.acoes-topo form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.acoes-topo input,
+.acoes-topo select {
+  padding: 8px 12px;
+  border: 1px solid var(--rosa-claro);
+  border-radius: 999px;
+  font-family: var(--fonte-corpo);
+  font-size: 0.9rem;
+  background: var(--branco);
+  color: var(--texto);
+}
+
+.botao-pequeno {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--rosa-medio);
+  background: var(--branco);
+  color: var(--rosa-principal);
+  font-family: var(--fonte-corpo);
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.botao-pequeno:hover {
+  background: var(--rosa-claro);
+  text-decoration: none;
+}
+
+.botao-pequeno.perigo {
+  color: #a02847;
+  border-color: #f6c3cf;
+}
+
+.botao-pequeno.perigo:hover {
+  background: #fdecef;
+}
+
+/* --- 3. Tabelas --------------------------------------------------------- */
+/* No celular a tabela rola para o lado em vez de espremer as colunas. */
+.tabela-rolagem {
+  overflow-x: auto;
+  background: var(--branco);
+  border: 1px solid var(--rosa-claro);
+  border-radius: var(--raio);
+  box-shadow: var(--sombra);
+}
+
+table.lista {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  min-width: 620px;
+}
+
+table.lista th,
+table.lista td {
+  padding: 10px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--rosa-claro);
+  vertical-align: middle;
+}
+
+table.lista th {
+  font-family: var(--fonte-titulo);
+  color: var(--rosa-principal);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  background: var(--rosa-fundo);
+}
+
+table.lista tr:last-child td {
+  border-bottom: 0;
+}
+
+table.lista img.miniatura {
+  width: 54px;
+  height: 54px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid var(--rosa-claro);
+}
+
+.acoes-linha {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.acoes-linha form {
+  display: inline;
+}
+
+/* Etiquetas de situacao */
+.etiqueta {
+  display: inline-block;
+  font-size: 0.72rem;
+  padding: 3px 9px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.etiqueta-ativo    { background: #e7f7ec; color: #1d6b3a; }
+.etiqueta-inativo  { background: #f1eef0; color: #7b6a71; }
+.etiqueta-destaque { background: var(--rosa-claro); color: var(--rosa-principal); }
+
+.status-novo        { background: #fdecef; color: #a02847; }
+.status-em_producao { background: #fff4e0; color: #8a5a10; }
+.status-pago        { background: #e8f0ff; color: #2a4d8f; }
+.status-enviado     { background: #eef0ff; color: #443f9c; }
+.status-entregue    { background: #e7f7ec; color: #1d6b3a; }
+.status-cancelado   { background: #f1eef0; color: #7b6a71; }
+
+/* --- 4. Formularios do painel ------------------------------------------- */
+.cartao {
+  background: var(--branco);
+  border: 1px solid var(--rosa-claro);
+  border-radius: var(--raio);
+  box-shadow: var(--sombra);
+  padding: 18px 16px;
+  margin-bottom: 16px;
+}
+
+.cartao h2 {
+  font-size: 1.05rem;
+  margin-top: 0;
+}
+
+.linha-campos {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0 16px;
+}
+
+.caixa-checkbox {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+}
+
+.caixa-checkbox label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 400;
+  font-size: 0.9rem;
+  background: var(--rosa-fundo);
+  border: 1px solid var(--rosa-claro);
+  border-radius: 999px;
+  padding: 6px 14px;
+  cursor: pointer;
+}
+
+.caixa-checkbox input {
+  width: auto;
+  margin: 0;
+}
+
+/* Previa das imagens escolhidas no upload */
+.previa {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.previa-imagem {
+  width: 74px;
+  height: 74px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 2px solid var(--rosa-claro);
+}
+
+/* Fotos ja salvas do produto */
+.fotos-salvas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.foto-salva {
+  width: 120px;
+  text-align: center;
+  background: var(--rosa-fundo);
+  border: 1px solid var(--rosa-claro);
+  border-radius: var(--raio);
+  padding: 8px;
+}
+
+.foto-salva img {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 6px;
+}
+
+.foto-salva label {
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin-bottom: 6px;
+  font-weight: 400;
+}
+
+.foto-salva input[type="radio"] {
+  width: auto;
+}
+
+.botoes-formulario {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+.botoes-formulario .botao {
+  width: auto;
+  font-size: 0.95rem;
+  padding: 11px 24px;
+}
+
+/* --- 5. Inicio do painel (dashboard) ------------------------------------ */
+.cartoes-numeros {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.cartao-numero {
+  background: var(--branco);
+  border: 1px solid var(--rosa-claro);
+  border-radius: var(--raio);
+  box-shadow: var(--sombra);
+  padding: 14px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.cartao-numero:hover {
+  text-decoration: none;
+  box-shadow: var(--sombra-forte);
+}
+
+.cartao-numero strong {
+  display: block;
+  font-family: var(--fonte-titulo);
+  font-size: 1.9rem;
+  color: var(--rosa-principal);
+  line-height: 1.1;
+}
+
+.cartao-numero span {
+  font-size: 0.8rem;
+  color: var(--texto-suave);
+}
+
+/* --- 6. Telas maiores --------------------------------------------------- */
+@media (min-width: 600px) {
+  .cartoes-numeros { grid-template-columns: repeat(4, 1fr); }
+  .linha-campos { grid-template-columns: 1fr 1fr; }
+}
+
+@media (min-width: 992px) {
+  /* O menu deixa de deslizar e fica fixo na esquerda. */
+  .painel-menu {
+    transform: none;
+    width: 230px;
+    max-width: 230px;
+    box-shadow: none;
+  }
+
+  .painel-menu .menu-fechar { display: none; }
+
+  .painel-conteudo { margin-left: 230px; }
+
+  .painel-topo #abrirMenu { display: none; }
+
+  .painel-corpo { padding: 22px 26px 40px; }
+
+  .painel-topo { padding: 14px 26px; }
+
+  .painel-topo h1 { font-size: 1.3rem; }
+}

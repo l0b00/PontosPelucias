@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Imagem usada quando um produto, categoria ou colecao ainda nao tem foto. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400" role="img" aria-label="Sem foto">
+  <rect width="400" height="400" fill="#fbdce7"/>
+  <g fill="none" stroke="#e8789f" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">
+    <!-- novelo de la -->
+    <circle cx="200" cy="190" r="78"/>
+    <path d="M140 150c40 10 76 40 94 84"/>
+    <path d="M160 128c46 18 82 56 98 104"/>
+    <path d="M250 136c-24 30-36 66-34 104"/>
+    <!-- agulha -->
+    <path d="M262 258l56 56"/>
+    <path d="M318 314c7 7 18 7 25 0s7-18 0-25"/>
+  </g>
+  <text x="200" y="332" text-anchor="middle" font-family="Trebuchet MS, sans-serif"
+        font-size="30" fill="#a98b96">sem foto</text>
+</svg>
