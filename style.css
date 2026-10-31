@@ -176,10 +176,10 @@ h3{
     
 }
 
-img:hover{
+/* .img:hover{
     transform: translate(-10px);
-    box-shadow: 0px 10px 20px rgba(244, 130, 170, 0.25);
-}
+    box-shadow: 0px 10px 20px rgba(245, 111, 158, 0.25);
+} */
 
 .cat_txt{
    margin: 1px;
@@ -194,25 +194,85 @@ img:hover{
     flex:1 1 200;
 }
 
-.img2{
-    height: 160px;
-    width: 149px;
+.img_2{
+    height: 165px;
+    width: 150px;
     border-radius: 30px;
 }
 
 .catalogo{
     display: flex;
     justify-content: space-around;
+    padding-bottom: 25px;
 }
 
 .categoria2{
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-decoration: none;
+    color:rgb(244, 130, 170);
 }
 
 .cards2{
     background-color:rgb(255, 214, 228) ;
-    padding:20px;
+    padding:15px;
+    padding-bottom: 8px;
     border-radius: 30px;
+}
+
+.cards2:hover{
+transform: translate(-10px);
+box-shadow: 0px 10px 20px rgba(114, 35, 62, 0.25);
+}
+.cat_txt2{
+   text-decoration: none;
+   margin: 10px;
+   font-family: 'DynaPuff';
+   font-size: 15px;
+}
+
+.info_img{
+  width: 200px;
+  height: 250px;
+  border-radius: 50px;
+
+}
+
+.info_titulo{
+   font-family: 'DynaPuff';
+   font-size: 20px;
+}
+
+.info_desc{
+   font-family: 'Fredoka';
+   font-size: 15px;
+   padding-bottom: 20px;
+   margin: 0px;
+   display: flex;
+   flex-direction: column;
+   text-align: start;
+}
+
+.voltar{
+  text-decoration: none;
+   font-family: 'DynaPuff';
+   font-size: 15px;
+   color:rgb(244, 130, 170) ;
+   padding-top: 0px;
+   margin-top: 0px;
+   margin-bottom: 40px;
+}
+
+.detalhes{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   padding: 0px;
+   margin: 0px;
+   text-align: center; 
+}
+
+.lista_desc{
+    margin: 0px;
 }
