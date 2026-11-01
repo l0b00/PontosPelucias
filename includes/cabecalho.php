@@ -20,13 +20,13 @@
                     <span class="menu_txt">Menu</span>
                 </summary>
                 <ul class="topico">
-                    <li><a class="link" href="index.html">Início</a></li>
+                    <li><a class="link" href="index.php">Início</a></li>
                     <li><a class="link" href="catalogo.php">Catálogo</a></li>
                     <li><a class="link" href="carrinho.html">Carrinho</a></li>
                     <li><a class="link" href="contato.html">Contato</a></li>
                 </ul>
             </details>
-            <nav class="pag_inicial"><h1><a class="link" href="index.html">Pontos e Pelúcias</a></h1>
+            <nav class="pag_inicial"><h1><a class="link" href="index.php">Pontos e Pelúcias</a></h1>
             <span class="subtitulo">by Carol</span></nav>
         </div>
     </header>

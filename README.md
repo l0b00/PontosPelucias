@@ -20,9 +20,10 @@ Se o seu MySQL tiver usuário/senha diferente de `root` sem senha, ajuste em `in
 
 | Arquivo | O que faz |
 |---|---|
-| `banco/pontospelucias.sql` | Cria o banco `pontospelucias` e a tabela `produtos` com todos os itens |
+| `banco/pontospelucias.sql` | Cria o banco `pontospelucias` e as tabelas `produtos` e `categorias` |
 | `includes/conexao.php` | Conexão com o banco (PDO) |
 | `includes/cabecalho.php` | Cabeçalho e menu usados pelas páginas PHP |
+| `index.php` | Página inicial, com os cards de categoria vindos da tabela `categorias` |
 | `catalogo.php` | Lista os produtos do banco |
 | `informacao.php?id=N` | Mostra os detalhes do produto `N` |
 

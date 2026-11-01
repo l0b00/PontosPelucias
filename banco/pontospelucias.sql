@@ -10,6 +10,23 @@ CREATE DATABASE IF NOT EXISTS pontospelucias
 USE pontospelucias;
 
 DROP TABLE IF EXISTS produtos;
+DROP TABLE IF EXISTS categorias;
+
+-- Cards de categoria da página inicial
+CREATE TABLE categorias (
+    id     INT UNSIGNED  NOT NULL AUTO_INCREMENT,
+    nome   VARCHAR(50)   NOT NULL,
+    imagem VARCHAR(255)  NOT NULL,   -- caminho da imagem, ex: img/Chaveiro_Abelha.jpeg
+    ordem  INT           NOT NULL DEFAULT 0,  -- posição do card na página inicial
+    PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO categorias (id, nome, imagem, ordem) VALUES
+(1, 'chaveiros',   'img/Chaveiro_Abelha.jpeg', 1),
+(2, 'personagens', 'img/Boneco_Naruto.jpeg',   2),
+(3, 'animais',     'img/gato_amarelo.jpeg',    3),
+(4, 'pelúcias',    'img/marrie.jpeg',          4),
+(5, 'outros',      'img/bolsa_morango.jpeg',   5);
 
 CREATE TABLE produtos (
     id        INT UNSIGNED  NOT NULL AUTO_INCREMENT,
