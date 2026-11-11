@@ -22,7 +22,6 @@
                 <ul class="topico">
                     <li><a class="link" href="index.php">Início</a></li>
                     <li><a class="link" href="catalogo.php">Catálogo</a></li>
-                    <li><a class="link" href="carrinho.html">Carrinho</a></li>
                     <li><a class="link" href="contato.html">Contato</a></li>
                 </ul>
             </details>
