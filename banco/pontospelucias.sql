@@ -60,3 +60,11 @@ INSERT INTO produtos (id, nome, imagem, preco, cores, opcoes, categoria) VALUES
 (17, 'Naruto',             'img/Boneco_Naruto.jpeg',           NULL,  NULL, NULL, 'Boneco'),
 (18, 'Marca páginas Flor', 'img/Paginas_Flores.jpeg',          NULL,  NULL, NULL, 'Marca páginas'),
 (19, 'Rosa',               'img/Decoracao_Flores.jpeg',        NULL,  NULL, NULL, 'Decoração');
+
+--parte do administrador--
+CREATE TABLE administradores (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    senha VARCHAR(255) NOT NULL,
+    criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

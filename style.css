@@ -473,3 +473,67 @@ box-shadow: 0px 10px 20px rgba(114, 35, 62, 0.25);
     object-fit: contain;
     border-radius: 50%;
 }
+
+.titulo_login{
+    font-family: 'DynaPuff',cursive;
+    display: flex;
+    justify-content: center;
+    font-size: 35px;
+    
+}
+
+.usuario{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.usuario_txt{
+    font-family: 'Dynapuff';
+    font-size: 20px;
+    margin-left: -117px;
+    margin-bottom: -15px;
+
+}
+
+.usuario_box{
+    width: 300px;
+    height: 24px;
+}
+
+.senha{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.senha_txt{
+    font-family: 'Dynapuff';
+    font-size: 20px;
+    margin-left: -225px;
+    margin-bottom: -15px;
+
+}
+
+.senha_box{
+    width: 300px;
+    height: 24px;
+}
+
+.entrar{
+    background: none;
+    border: none;
+    display: block;
+    margin: 0 auto;
+    font-family: 'Dynapuff';
+    font-size: 20px;
+    color:  rgb(244, 130, 170);
+    text-decoration: underline;
+
+}
+
+.login-container{
+    display: flex;
+    flex-direction: column;
+    margin-top: 90px;
+}
