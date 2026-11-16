@@ -22,7 +22,7 @@
                 <ul class="topico">
                     <li><a class="link" href="index.php">Início</a></li>
                     <li><a class="link" href="catalogo.php">Catálogo</a></li>
-                    <li><a class="link" href="contato.html">Contato</a></li>
+                    <li><a class="link" href="contato.php">Contato</a></li>
                 </ul>
             </details>
             <nav class="pag_inicial"><h1><a class="link" href="index.php">Pontos e Pelúcias</a></h1>
