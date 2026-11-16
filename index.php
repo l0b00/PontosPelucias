@@ -24,5 +24,8 @@ require 'includes/cabecalho.php';
         <div class="colecao"><h2 class="titulo_colecao">Coleções</h2><p class="colecao_txt">Kit e conjuntos dos amigurumis mais amados em um só lugar</p></div>
         <a class="box_colecao"><img class="img_colecao" src="img/colecao2.jpeg"></a>
     </div>
+
+ <?php include 'rodape.php'; ?>
+ 
 </body>
 </html>

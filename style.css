@@ -382,15 +382,26 @@ box-shadow: 0px 10px 20px rgba(114, 35, 62, 0.25);
     min-height: 65px;
 }
 
-.contato_botao{
+.contato_botao {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
     font-family: 'DynaPuff', cursive;
     font-size: 13px;
     text-decoration: none;
     color: white;
+
+    width: 180px;
+    height: 42px;
+    box-sizing: border-box;
+
     padding: 12px 15px;
     border-radius: 25px;
     margin-top: 10px;
+
     transition: 0.3s;
+    white-space: nowrap;
 }
 
 .contato_botao:hover{

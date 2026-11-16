@@ -84,7 +84,39 @@ CREATE TABLE contatos_redes (
     PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-INSERT INTO contatos_redes (nome, icone, descricao, classe_css, link, texto_botao, ordem, ativo) VALUES
-('WhatsApp', 'img/whatsapp.png', 'Faça seu pedido ou tire dúvidas!', 'whatsapp', 'https://wa.me', 'Chamar no WhatsApp', 1, 1),
-('Instagram', 'img/instagram.png', 'Acompanhe as novidades e bastidores.', 'instagram', 'https://instagram.com', 'Seguir no Instagram', 2, 1);
 
+INSERT INTO contatos_redes
+(nome, icone, descricao, classe_css, link, texto_botao, ordem, ativo)
+VALUES
+('WhatsApp', 'img/whatsapp.png',
+ 'Faça seu pedido ou tire dúvidas!',
+ 'whatsapp', 'https://wa.me',
+ 'Chamar no WhatsApp', 1, 1),
+
+('Instagram', 'img/instagram.png',
+ 'Acompanhe as novidades e bastidores.',
+ 'instagram', 'https://instagram.com',
+ 'Seguir no Instagram', 2, 1),
+
+('TikTok', 'img/tiktok.png',
+ 'Acompanhe meus vídeos, novidades e bastidores das peças feitas à mão!',
+ 'tiktok', 'https://www.tiktok.com/@pontosepelucias',
+ 'Ver meu TikTok', 3, 1);
+
+CREATE TABLE configuracoes_rodape (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    titulo VARCHAR(255) NOT NULL,
+    mensagem VARCHAR(255) NOT NULL,
+    texto_final VARCHAR(255) NOT NULL,
+    ativo TINYINT(1) NOT NULL DEFAULT 1
+);
+
+INSERT INTO configuracoes_rodape
+(titulo, mensagem, texto_final, ativo)
+VALUES
+(
+    'Feito à mão, com muito amor ♡',
+    'Obrigada por apoiar meu trabalho artesanal!',
+    '♡ Pontos e Pelúcias by Carol ♡',
+    1
+);
