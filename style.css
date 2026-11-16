@@ -537,3 +537,300 @@ box-shadow: 0px 10px 20px rgba(114, 35, 62, 0.25);
     flex-direction: column;
     margin-top: 90px;
 }
+
+/* REDES SOCIAIS */
+
+.redes_loja {
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 25px 15px;
+    text-align: center;
+    background-color: white;
+    border-radius: 30px;
+    box-shadow: 0px 5px 10px rgba(244, 130, 170, 0.20);
+}
+
+.redes_loja h2,
+.catalogo_chamada h2 {
+    font-family: 'DynaPuff', cursive;
+    font-size: 23px;
+}
+
+.redes_loja p,
+.catalogo_chamada p {
+    font-family: 'Fredoka', cursive;
+    color: rgb(170, 91, 120);
+}
+
+.redes_botoes {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.rede_botao {
+    text-decoration: none;
+    font-family: 'DynaPuff', cursive;
+    color: rgb(244, 130, 170);
+    background-color: rgb(255, 228, 237);
+    padding: 13px 25px;
+    border-radius: 30px;
+    transition: 0.3s;
+}
+
+.rede_botao:hover {
+    transform: translateY(-5px);
+    background-color: rgb(255, 210, 225);
+}
+
+/* CHAMADA DO CATÁLOGO */
+
+.catalogo_chamada {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 35px 20px;
+    text-align: center;
+    background-color: rgb(255, 228, 237);
+    border-radius: 30px;
+}
+
+.catalogo_botao {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 13px 25px;
+    background-color: rgb(244, 130, 170);
+    color: white;
+    border-radius: 30px;
+    text-decoration: none;
+    font-family: 'DynaPuff', cursive;
+    transition: 0.3s;
+}
+
+.catalogo_botao:hover {
+    transform: scale(1.05);
+    background-color: rgb(225, 100, 145);
+}
+
+/* RODAPÉ */
+
+.rodape_loja {
+    text-align: center;
+    background-color: white;
+    padding: 25px 15px;
+    margin-top: 60px;
+    box-shadow: 0px -5px 10px rgba(244, 130, 170, 0.15);
+}
+
+.rodape_loja h3 {
+    font-family: 'DynaPuff', cursive;
+    font-size: 18px;
+}
+
+.rodape_loja p {
+    font-family: 'Fredoka', cursive;
+    color: rgb(170, 91, 120);
+}
+
+/* WHATSAPP FLUTUANTE */
+
+.whatsapp_flutuante {
+    position: fixed;
+    right: 22px;
+    bottom: 25px;
+    width: 62px;
+    height: 62px;
+    background-color: rgb(111, 190, 135);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.20);
+    z-index: 100;
+    transition: 0.3s;
+}
+
+.whatsapp_flutuante img {
+    width: 38px;
+    height: 38px;
+    object-fit: contain;
+}
+
+.whatsapp_flutuante:hover {
+    transform: scale(1.12);
+}
+
+@media (max-width: 500px) {
+    .redes_loja,
+    .catalogo_chamada {
+        margin: 30px 16px;
+    }
+
+    .redes_loja h2,
+    .catalogo_chamada h2 {
+        font-size: 19px;
+    }
+
+    .whatsapp_flutuante {
+        width: 55px;
+        height: 55px;
+        right: 16px;
+        bottom: 18px;
+    }
+}/* REDES SOCIAIS */
+
+.redes_loja {
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 25px 15px;
+    text-align: center;
+    background-color: white;
+    border-radius: 30px;
+    box-shadow: 0px 5px 10px rgba(244, 130, 170, 0.20);
+}
+
+.redes_loja h2,
+.catalogo_chamada h2 {
+    font-family: 'DynaPuff', cursive;
+    font-size: 23px;
+}
+
+.redes_loja p,
+.catalogo_chamada p {
+    font-family: 'Fredoka', cursive;
+    color: rgb(170, 91, 120);
+}
+
+.redes_botoes {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.rede_botao {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 55px;
+    height: 55px;
+
+    background-color: rgb(255, 228, 237);
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.rede_botao img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+}
+
+.rede_botao img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+}
+
+.rede_botao:hover {
+    transform: translateY(-5px);
+    background-color: rgb(255, 210, 225);
+}
+
+/* CHAMADA DO CATÁLOGO */
+
+.catalogo_chamada {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 35px 20px;
+    text-align: center;
+    background-color: rgb(255, 228, 237);
+    border-radius: 30px;
+}
+
+.catalogo_botao {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 13px 25px;
+    background-color: rgb(244, 130, 170);
+    color: white;
+    border-radius: 30px;
+    text-decoration: none;
+    font-family: 'DynaPuff', cursive;
+    transition: 0.3s;
+}
+
+.catalogo_botao:hover {
+    transform: scale(1.05);
+    background-color: rgb(225, 100, 145);
+}
+
+/* RODAPÉ */
+
+.rodape_loja {
+    text-align: center;
+    background-color: white;
+    padding: 25px 15px;
+    margin-top: 60px;
+    box-shadow: 0px -5px 10px rgba(244, 130, 170, 0.15);
+}
+
+.rodape_loja h3 {
+    font-family: 'DynaPuff', cursive;
+    font-size: 18px;
+}
+
+.rodape_loja p {
+    font-family: 'Fredoka', cursive;
+    color: rgb(170, 91, 120);
+}
+
+/* WHATSAPP FLUTUANTE */
+
+.whatsapp_flutuante {
+    position: fixed;
+    right: 22px;
+    bottom: 25px;
+    width: 62px;
+    height: 62px;
+    background-color: rgb(255, 210, 225);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.20);
+    z-index: 100;
+    transition: 0.3s;
+}
+
+.whatsapp_flutuante img {
+    width: 53px;
+    height: 53px;
+    object-fit: contain;
+}
+
+.whatsapp_flutuante:hover {
+    transform: scale(1.12);
+}
+
+@media (max-width: 500px) {
+    .redes_loja,
+    .catalogo_chamada {
+        margin: 30px 16px;
+    }
+
+    .redes_loja h2,
+    .catalogo_chamada h2 {
+        font-size: 19px;
+    }
+
+    .whatsapp_flutuante {
+        width: 55px;
+        height: 55px;
+        right: 16px;
+        bottom: 18px;
+    }
+}

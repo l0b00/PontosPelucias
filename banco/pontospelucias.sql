@@ -61,10 +61,30 @@ INSERT INTO produtos (id, nome, imagem, preco, cores, opcoes, categoria) VALUES
 (18, 'Marca páginas Flor', 'img/Paginas_Flores.jpeg',          NULL,  NULL, NULL, 'Marca páginas'),
 (19, 'Rosa',               'img/Decoracao_Flores.jpeg',        NULL,  NULL, NULL, 'Decoração');
 
---parte do administrador--
+-- parte do administrador
 CREATE TABLE administradores (
     id INT AUTO_INCREMENT PRIMARY KEY,
     email VARCHAR(255) NOT NULL UNIQUE,
     senha VARCHAR(255) NOT NULL,
     criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+DROP TABLE IF EXISTS contatos_redes;
+
+CREATE TABLE contatos_redes (
+    id          INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    nome        VARCHAR(50)  NOT NULL,
+    icone       VARCHAR(255) NOT NULL,
+    descricao   VARCHAR(255) NOT NULL,
+    classe_css  VARCHAR(50)  NULL,
+    link        VARCHAR(255) NOT NULL,
+    texto_botao VARCHAR(50)  NOT NULL,
+    ordem       INT          NOT NULL DEFAULT 0,
+    ativo       TINYINT(1)   NOT NULL DEFAULT 1,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO contatos_redes (nome, icone, descricao, classe_css, link, texto_botao, ordem, ativo) VALUES
+('WhatsApp', 'img/whatsapp.png', 'Faça seu pedido ou tire dúvidas!', 'whatsapp', 'https://wa.me', 'Chamar no WhatsApp', 1, 1),
+('Instagram', 'img/instagram.png', 'Acompanhe as novidades e bastidores.', 'instagram', 'https://instagram.com', 'Seguir no Instagram', 2, 1);
+
