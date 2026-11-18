@@ -1,10 +1,12 @@
 <?php
 session_start();
 
-// Inclua o seu arquivo de conexão com o banco de dados aqui (ex: include 'conexao.php';)
-// Certifique-se de que a variável $pdo está configurada e funcionando.
+require_once 'includes/conexao.php';
+
+$erro = '';
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $usuario = $_POST['usuario'] ?? '';
+    $usuario = trim($_POST['usuario'] ?? '');
     $senha = $_POST['senha'] ?? '';
 
     if (!empty($usuario) && !empty($senha)) {
@@ -19,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['is_admin'] = true;
             $_SESSION['admin_email'] = $admin['email'];
             
-            // Redireciona para o painel administrativo correto
+            // Redireciona para o painel administrativo principal na mesma pasta admin/
             header('Location: index_admin.php');
             exit;
         } else {
@@ -35,8 +37,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>administrador</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Login Administrador - Pontos e Pelúcias</title>
+    <!-- Como está na pasta admin/, o CSS na raiz é chamado voltando uma pasta -->
+    <link rel="stylesheet" href="../style.css">
 
     <link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap" rel="stylesheet">
@@ -44,11 +47,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <body>
     <div class="login-container">
-        <h2 class="titulo_login">Login</h2>
+        <h2 class="titulo_login">Login Admin</h2>
 
         <!-- Exibe mensagem de erro caso exista -->
         <?php if (!empty($erro)): ?>
-            <div><?php echo $erro; ?></div>
+            <div style="color: #d9534f; margin-bottom: 10px; font-weight: 500;"><?= e($erro); ?></div>
         <?php endif; ?>
 
         <form class="login" action="login_admin.php" method="POST">
