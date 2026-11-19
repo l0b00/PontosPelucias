@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Login Administrador - Pontos e Pelúcias</title>
     <!-- Como está na pasta admin/, o CSS na raiz é chamado voltando uma pasta -->
     <link rel="stylesheet" href="style.css">
-
+    <link rel="stylesheet" href="../style.css">
     <link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap" rel="stylesheet">
 </head>

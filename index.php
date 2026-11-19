@@ -19,6 +19,9 @@ require 'includes/cabecalho.php';
     <div class="cards">
         <!-- O link abre e fecha DENTRO do card, englobando certinho a imagem e o texto -->
         <a class="inf_txt" href="catalogo.php?categoria=<?= urlencode($categoria['nome']) ?>" class="categoria">
+
+        <a href="catalogo.php?categoria=<?= urlencode($categoria['nome']) ?>" class="categoria">
+
             <img class="img" src="<?= e($categoria['imagem']) ?>" alt="<?= e($categoria['nome']) ?>">
             <p class="cat_txt"><?= e($categoria['nome']) ?></p>
         </a>

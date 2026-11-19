@@ -4,6 +4,11 @@ session_start();
 //     header('Location: login_admin_certo.php');
 //     exit;
 // }
+if (!isset($_SESSION['is_admin']) || $_SESSION['is_admin'] !== true) {
+    header('Location: login_admin.php');
+    exit;
+}
+
 
 require 'includes/conexao.php';
 

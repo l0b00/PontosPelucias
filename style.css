@@ -538,8 +538,8 @@ box-shadow: 0px 10px 20px rgba(114, 35, 62, 0.25);
     margin: 0 auto;
     font-family: 'Dynapuff';
     font-size: 20px;
-    
-
+    color:  rgb(244, 130, 170);
+    text-decoration: underline;
 }
 
 .login-container{
@@ -843,6 +843,7 @@ box-shadow: 0px 10px 20px rgba(114, 35, 62, 0.25);
         right: 16px;
         bottom: 18px;
     }
+
 }
 
 .botao_entrar{
@@ -857,5 +858,6 @@ box-shadow: 0px 10px 20px rgba(114, 35, 62, 0.25);
     flex-direction: column;
     text-align: center;
     gap: 5px;
+
 
 }
