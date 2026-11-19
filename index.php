@@ -15,14 +15,23 @@ require 'includes/cabecalho.php';
     </aside>
 
     <div class="container">
-        <?php foreach ($categorias as $categoria): ?>
-        <div class="cards"><a class="categoria"><img class="img" src="<?= e($categoria['imagem']) ?>"><p class="cat_txt"><?= e($categoria['nome']) ?></p></a></div>
-        <?php endforeach; ?>
+    <?php foreach ($categorias as $categoria): ?>
+    <div class="cards">
+        <!-- O link abre e fecha DENTRO do card, englobando certinho a imagem e o texto -->
+        <a class="inf_txt" href="catalogo.php?categoria=<?= urlencode($categoria['nome']) ?>" class="categoria">
+            <img class="img" src="<?= e($categoria['imagem']) ?>" alt="<?= e($categoria['nome']) ?>">
+            <p class="cat_txt"><?= e($categoria['nome']) ?></p>
+        </a>
     </div>
+    <?php endforeach; ?>
+</div>
 
     <div class="container_colecao">
         <div class="colecao"><h2 class="titulo_colecao">Coleções</h2><p class="colecao_txt">Kit e conjuntos dos amigurumis mais amados em um só lugar</p></div>
         <a class="box_colecao"><img class="img_colecao" src="img/colecao2.jpeg"></a>
     </div>
+
+ <?php include 'rodape.php'; ?>
+ 
 </body>
 </html>
