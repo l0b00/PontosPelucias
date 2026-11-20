@@ -57,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <!-- Exibe mensagem de erro na tela caso exista -->
         <?php if (!empty($erro)): ?>
-            <div style="background-color: #fdd; color: #d9534f; padding: 10px; border-radius: 5px; margin-bottom: 15px; font-weight: bold; text-align: center;">
+            <div class="erro-msg">
                 <?= htmlspecialchars($erro, ENT_QUOTES, 'UTF-8'); ?>
             </div>
         <?php endif; ?>
