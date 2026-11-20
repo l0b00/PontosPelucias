@@ -5,7 +5,7 @@
 
     <h2>Mais fofuras por aqui!</h2>
 
-    <p>Novidades, encomendas e nossas criações especiais.</p>
+    <p>Novidades, encomendas e minhas criações especiais.</p>
 
     <div class="redes_botoes">
 
