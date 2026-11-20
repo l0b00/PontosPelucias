@@ -13,5 +13,7 @@ require 'includes/cabecalho.php';
         <?php endforeach; ?>
     </div>
 
+    <?php include 'rodape.php';?>
+    
 </body>
 </html>

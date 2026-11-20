@@ -1,6 +1,10 @@
+<?php
+// Descobre qual arquivo está aberto no momento (ex: index.php, contato.php, catalogo.php)
+$pagina_atual = basename($_SERVER['PHP_SELF']);
+?>
 
-<!-- REDES SOCIAIS -->
-
+<!-- 1. REDES SOCIAIS: Aparece em tudo, EXCETO na página contato.php -->
+<?php if ($pagina_atual !== 'contato.php'): ?>
 <section class="redes_loja">
 
     <h2>Mais fofuras por aqui!</h2>
@@ -9,14 +13,14 @@
 
     <div class="redes_botoes">
 
-        <a href="https://www.instagram.com/SEU_PERFIL"
+        <a href="https://instagram.com"
            target="_blank"
            rel="noopener noreferrer"
            class="rede_botao">
             <img src="img/instagram.png" alt="Instagram">
         </a>
 
-        <a href="https://www.tiktok.com/@pontosepelucias"
+        <a href="https://tiktok.com"
            target="_blank"
            rel="noopener noreferrer"
            class="rede_botao">
@@ -26,9 +30,11 @@
     </div>
 
 </section>
+<?php endif; ?>
 
-<!-- CHAMADA DO CATÁLOGO -->
 
+<!-- 2. CHAMADA DO CATÁLOGO: Aparece em tudo, EXCETO na página catalogo.php -->
+<?php if ($pagina_atual !== 'catalogo.php'): ?>
 <section class="catalogo_chamada">
 
     <h2>Encontrou sua nova fofura?</h2>
@@ -40,9 +46,10 @@
     </a>
 
 </section>
+<?php endif; ?>
 
-<!-- RODAPÉ -->
 
+<!-- 3. RODAPÉ PRINCIPAL: Aparece em TODAS as páginas -->
 <footer class="rodape_loja">
 
     <h3>Feito à mão, com muito amor ♡</h3>
@@ -51,9 +58,10 @@
 
 </footer>
 
-<!-- WHATSAPP FLUTUANTE -->
 
-<a href="https://wa.me/5519994520945"
+<!-- 4. WHATSAPP FLUTUANTE: Aparece em tudo, EXCETO na página contato.php -->
+<?php if ($pagina_atual !== 'contato.php'): ?>
+<a href="https://wa.me"
    class="whatsapp_flutuante"
    target="_blank"
    rel="noopener noreferrer"
@@ -62,3 +70,4 @@
     <img src="img/whatsapp.png" alt="WhatsApp">
 
 </a>
+<?php endif; ?>
