@@ -120,3 +120,7 @@ VALUES
     '♡ Pontos e Pelúcias by Carol ♡',
     1
 );
+
+-- Insere o seu e-mail e o hash gerado --
+INSERT INTO administradores (email, senha) 
+VALUES ('admin', '$2y$10$GorLDq6WgNxj9O7Xw15w4.v1WRDNclbXjfKgwoRvoun/z0a6UVpa.');

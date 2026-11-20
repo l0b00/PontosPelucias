@@ -1,10 +1,9 @@
 <?php
 session_start();
-// Protege a página: se não estiver logado como admin, redireciona para o login
-// if (!isset($_SESSION['is_admin']) || $_SESSION['is_admin'] !== true) {
-//     header('Location: login_admin_certo.php');
-//     exit;
-// }
+//Protege a página: se não estiver logado como admin, redireciona para o login
+if (!isset($_SESSION['is_admin']) || $_SESSION['is_admin'] !== true) {
+    header('Location: login_admin_certo.php');
+    exit; }
 
 // Sobe um nível para acessar a conexão na pasta anterior
 require 'includes/conexao.php';

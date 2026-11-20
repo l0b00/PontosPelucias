@@ -15,18 +15,20 @@ require 'includes/cabecalho.php';
     </aside>
 
     <div class="container">
-    <?php foreach ($categorias as $categoria): ?>
-    <div class="cards">
-        <!-- O link abre e fecha DENTRO do card, englobando certinho a imagem e o texto -->
-        <a class="inf_txt" href="catalogo.php?categoria=<?= urlencode($categoria['nome']) ?>" class="categoria">
+   <?php foreach ($categorias as $categoria): ?>
+<div class="cards">
+    <!-- Link extra ou texto informativo separado -->
+    <a class="inf_txt" href="catalogo.php?categoria=<?php echo urlencode($categoria['nome']); ?>">
+        <?php echo e($categoria['nome']); ?>
+    </a>
 
-        <a href="catalogo.php?categoria=<?= urlencode($categoria['nome']) ?>" class="categoria">
-
-            <img class="img" src="<?= e($categoria['imagem']) ?>" alt="<?= e($categoria['nome']) ?>">
-            <p class="cat_txt"><?= e($categoria['nome']) ?></p>
-        </a>
-    </div>
-    <?php endforeach; ?>
+    <!-- Link principal que engloba a imagem e o texto do card -->
+    <a class="inf_txt" href="catalogo.php?categoria=<?php echo urlencode($categoria['nome']); ?>">
+        <img class="img" src="<?php echo e($categoria['imagem']); ?>" alt="<?php echo e($categoria['nome']); ?>">
+        <p class="cat_txt"><?php echo e($categoria['nome']); ?></p>
+    </a>
+</div>
+<?php endforeach; ?>
 </div>
 
     <div class="container_colecao">
