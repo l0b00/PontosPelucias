@@ -1,36 +1,62 @@
-# PontosPelucias
+# Pontos e Pelúcias (by Carol)
+## Objetivo do projeto
 
-Site da loja Pontos e Pelúcias (by Carol). Os produtos ficam num banco MariaDB e as páginas de catálogo e detalhe são geradas em PHP.
+Desenvolver um site para divulgação e comercialização de pelúcias artesanais de crochê, facilitando o acesso dos clientes a informações sobre os produtos, como disponibilidade, preços e opções disponíveis. O site também possibilita que os clientes entrem em contato para realizar pedidos, contribuindo para ampliar as oportunidades de venda e divulgação da loja.
 
-## Como rodar no seu PC (XAMPP)
+## Integrantes
+Aline Betti Pedro Bom — RA: 202610206
+Laís Freitas de Lima — RA: 202610214
+Matheus Jean Chehade — RA: 202610228
+Vitor Guadagnino — RA: 202610249
+Tecnologias utilizadas
+PHP: desenvolvimento das funcionalidades e páginas dinâmicas.
+HTML5: estruturação das páginas do site.
+CSS3: estilização e organização do layout.
+Apache: servidor web responsável por executar a aplicação.
+MySQL/MariaDB: gerenciamento e armazenamento dos dados.
+XAMPP: ambiente de desenvolvimento e execução local.
+## Instalação, configuração e execução
+### 1. Instalação
+Faça o download e instale o XAMPP.
+Abra o terminal ou CMD e acesse a pasta htdocs do XAMPP:
+bash
+cd C:\xampp\htdocs
 
-1. **Clone o projeto dentro do `htdocs` do XAMPP** (o Apache só serve arquivos de lá):
-   ```
-   cd C:\xampp\htdocs
-   git clone <url-do-repositorio> PontosPelucias
-   ```
-2. No XAMPP Control Panel, dê **Start** em **Apache** e **MySQL**.
-3. **Importe o banco**: abra http://localhost/phpmyadmin → aba **Importar** → escolha `banco/pontospelucias.sql` → **Executar**.
-   Ou pelo terminal: `C:\xampp\mysql\bin\mysql.exe -u root < banco/pontospelucias.sql`
-4. Acesse http://localhost/PontosPelucias/
+Clone o repositório dentro dessa pasta:
+bash
+git clone <url-do-repositorio> PontosPelucias
 
-Se o seu MySQL tiver usuário/senha diferente de `root` sem senha, ajuste em `includes/conexao.php`.
+### 2. Configuração do banco de dados
+Abra o XAMPP Control Panel.
+Inicie os serviços Apache e MySQL.
+Acesse o phpMyAdmin.
+Entre na aba Importar.
+Selecione o arquivo banco/pontospelucias.sql, localizado no projeto.
+Clique em Importar ou Executar para criar o banco de dados e suas respectivas tabelas.
+Caso necessário, ajuste as credenciais de conexão com o banco de dados no arquivo includes/conexao.php.
+Verifique se o banco de dados pontospelucias e as tabelas foram criados corretamente.
+### 3. Execução do projeto
 
-## Estrutura
+Após iniciar os serviços Apache e MySQL, utilize os seguintes endereços para acessar o sistema:
 
-| Arquivo | O que faz |
-|---|---|
-| `banco/pontospelucias.sql` | Cria o banco `pontospelucias` e as tabelas `produtos` e `categorias` |
-| `includes/conexao.php` | Conexão com o banco (PDO) |
-| `includes/cabecalho.php` | Cabeçalho e menu usados pelas páginas PHP |
-| `index.php` | Página inicial, com os cards de categoria vindos da tabela `categorias` |
-| `catalogo.php` | Lista os produtos do banco |
-| `informacao.php?id=N` | Mostra os detalhes do produto `N` |
+Acesso à loja:
 
-## Adicionar ou alterar produtos
+http://localhost/PontosPelucias/
 
-1. Coloque a imagem em `img/`.
-2. Edite os dados pelo phpMyAdmin (tabela `produtos`) — o site atualiza na hora.
-3. Para os parceiros receberem a mudança, atualize também o `INSERT` em `banco/pontospelucias.sql` e faça commit. Quem puxar reimporta o arquivo.
+Acesso ao painel administrativo:
 
-Para esconder um produto sem apagar, mude `ativo` para `0`. Preço, cores ou opções vazios (`NULL`) aparecem como "sob consulta" / "Sem opções".
+http://localhost/PontosPelucias/admin/login_admin.php
+
+Para acessar o painel, informe as credenciais de uma conta de administrador cadastrada na tabela administradores do banco de dados.
+
+O painel administrativo permite cadastrar, editar e excluir produtos. Todas as alterações são armazenadas diretamente no banco de dados MariaDB e refletidas no catálogo da loja.
+
+Observação: O XAMPP deve permanecer em execução durante a utilização local do sistema, mantendo os serviços Apache e MySQL ativos.
+
+### Principais funcionalidades
+Visualização do catálogo: permite que os clientes naveguem pelos produtos disponíveis na loja.
+Detalhes dos produtos: apresenta informações individuais, como nome, preço, imagens e opções disponíveis.
+Contato com a responsável: disponibiliza canais de comunicação para dúvidas, informações e realização de encomendas.
+Autenticação administrativa: permite que a responsável acesse o painel administrativo por meio de login e senha.
+Gerenciamento de produtos: possibilita cadastrar, editar e excluir produtos diretamente pelo painel administrativo.
+Atualização dinâmica: exibe no catálogo as informações armazenadas no banco de dados, refletindo as alterações realizadas no painel administrativo.
