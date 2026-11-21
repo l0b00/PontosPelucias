@@ -990,3 +990,105 @@ box-shadow: 0px 10px 20px rgba(114, 35, 62, 0.25);
 .acao_excluir:hover {
     text-decoration: underline;
 }
+
+
+/* FORMULÁRIO DE CADASTRO (ADMIN) */
+.admin_form_container {
+    max-width: 520px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: white;
+    border-radius: 30px;
+    box-shadow: 0px 5px 10px rgba(244, 130, 170, 0.25);
+}
+
+.admin_form_titulo {
+    font-family: 'DynaPuff', cursive;
+    font-size: 23px;
+    margin-top: 0;
+    margin-bottom: 18px;
+    color: rgb(244, 130, 170);
+    text-align: center;
+}
+
+.admin_form_erro {
+    font-family: 'Fredoka', cursive;
+    color: rgb(217, 83, 79);
+    background-color: rgb(255, 244, 248);
+    padding: 10px 14px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.admin_form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    font-family: 'Fredoka', cursive;
+}
+
+.admin_campo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.admin_campo label {
+    font-size: 15px;
+    color: rgb(170, 91, 120);
+}
+
+.admin_input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid rgb(255, 214, 228);
+    border-radius: 14px;
+    font-family: 'Fredoka', cursive;
+    font-size: 15px;
+    color: rgb(170, 91, 120);
+    box-sizing: border-box;
+    outline: none;
+}
+
+.admin_input:focus {
+    border-color: rgb(244, 130, 170);
+}
+
+.admin_file {
+    font-family: 'Fredoka', cursive;
+    font-size: 14px;
+    color: rgb(170, 91, 120);
+}
+
+.btn_admin_submit {
+    background-color: rgb(244, 130, 170);
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 25px;
+    font-family: 'DynaPuff', cursive;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 5px;
+}
+
+.btn_admin_submit:hover {
+    background-color: rgb(225, 100, 145);
+    transform: scale(1.02);
+}
+
+.admin_voltar {
+    text-align: center;
+    color: rgb(170, 91, 120);
+    text-decoration: none;
+    font-family: 'DynaPuff', cursive;
+    font-size: 13px;
+    margin-top: 4px;
+}
+
+.admin_voltar:hover {
+    text-decoration: underline;
+}
