@@ -26,6 +26,7 @@ $produtos = $pdo->query('SELECT * FROM produtos ORDER BY id DESC')->fetchAll();
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
             <h2>Painel Administrativo ♡</h2>
             <div>
+                <a class="sair" href="logout.php" style=" color:  rgb(244, 130, 170);text-decoration: none; font-size: 15px;margin-right: 10px;">Sair</a>
                 <a href="cadastrar_produto.php" style="background: #ffb6c1; color: #fff; padding: 10px 15px; border-radius: 8px; text-decoration: none; font-weight: bold; margin-right: 10px;">+ Novo Produto</a>
                 <a href="index.php" style="color: #666; text-decoration: none;">Ver Site</a>
             </div>
@@ -58,7 +59,7 @@ $produtos = $pdo->query('SELECT * FROM produtos ORDER BY id DESC')->fetchAll();
                 <?php endforeach; ?>
             </tbody>
         </table>
-
-    </div>
+     </div>
+     
 </body>
 </html>
