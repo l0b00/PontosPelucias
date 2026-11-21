@@ -1,11 +1,11 @@
 <?php
 session_start();
-// if (!isset($_SESSION['is_admin']) || $_SESSION['is_admin'] !== true) {
-//     header('Location: login_admin_certo.php');
-//     exit;
-// }
+if (!isset($_SESSION['is_admin']) || $_SESSION['is_admin'] !== true) {
+    header('Location: login_admin_certo.php');
+    exit;
+}
 
-require '../includes/conexao.php';
+require 'includes/conexao.php';
 
 $id = (int) ($_GET['id'] ?? 0);
 if ($id > 0) {

@@ -1,9 +1,9 @@
 <?php
 session_start();
-// if (!isset($_SESSION['is_admin']) || $_SESSION['is_admin'] !== true) {
-//     header('Location: login_admin.php');
-//     exit;
-// }
+if (!isset($_SESSION['is_admin']) || $_SESSION['is_admin'] !== true) {
+    header('Location: login_admin_certo.php');
+    exit;
+}
 
 require 'includes/conexao.php';
 
@@ -16,6 +16,7 @@ if (!$produto) {
     exit('Produto não encontrado.');
 }
 
+$erro = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nome = trim($_POST['nome'] ?? '');
     $preco = !empty($_POST['preco']) ? str_replace(',', '.', $_POST['preco']) : null;
@@ -24,21 +25,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $opcoes = trim($_POST['opcoes'] ?? '');
     $caminho_banco = $produto['imagem']; // Mantém a imagem antiga por padrão
 
-    // Se uma nova imagem foi enviada, substitui
+    // Se uma nova imagem foi enviada, substitui (só aceita formatos de imagem)
     if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK) {
         $extensao = strtolower(pathinfo($_FILES['imagem']['name'], PATHINFO_EXTENSION));
-        $destino = '../img/' . uniqid('prod_') . '.' . $extensao;
-        if (move_uploaded_file($_FILES['imagem']['tmp_name'], $destino)) {
-            $caminho_banco = 'img/' . basename($destino);
+        $permitidas = ['jpg', 'jpeg', 'png', 'webp'];
+
+        if (in_array($extensao, $permitidas)) {
+            $destino = '../img/' . uniqid('prod_') . '.' . $extensao;
+            if (move_uploaded_file($_FILES['imagem']['tmp_name'], $destino)) {
+                $caminho_banco = 'img/' . basename($destino);
+            }
+        } else {
+            $erro = "Formato de imagem inválido. Use JPG, JPEG, PNG ou WEBP.";
         }
     }
 
-    $sql = "UPDATE produtos SET nome = ?, imagem = ?, preco = ?, cores = ?, opcoes = ?, categoria = ? WHERE id = ?";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute([$nome, $caminho_banco, $preco, $cores, $opcoes, $categoria, $id]);
+    if ($erro === '') {
+        $sql = "UPDATE produtos SET nome = ?, imagem = ?, preco = ?, cores = ?, opcoes = ?, categoria = ? WHERE id = ?";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$nome, $caminho_banco, $preco, $cores, $opcoes, $categoria, $id]);
 
-    header('Location: index_admin.php');
-    exit;
+        header('Location: index_admin.php');
+        exit;
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -52,6 +61,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body style="background-color: #fffaf0; font-family: 'Fredoka', sans-serif; padding: 20px;">
     <div style="max-width: 500px; margin: 0 auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
         <h2>Editar Produto ♡</h2>
+        <?php if ($erro !== ''): ?>
+            <p style="color: #d9534f; font-weight: 500;"><?= e($erro) ?></p>
+        <?php endif; ?>
         <form action="editar_produto.php?id=<?= $produto['id'] ?>" method="POST" enctype="multipart/form-data" style="display: flex; flex-direction: column; gap: 15px;">
             <div>
                 <label>Nome:</label><br>

@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $erro = "Usuário ou senha incorretos!";
             }
         } catch (Exception $e) {
-            $erro = "Erro no banco de dados: " . $e->getMessage();
+            $erro = "Não foi possível entrar agora. Tente novamente.";
         }
     } else {
         $erro = "Por favor, preencha todos os campos.";
