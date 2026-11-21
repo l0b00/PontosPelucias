@@ -7,16 +7,22 @@ if (!isset($_SESSION['is_admin']) || $_SESSION['is_admin'] !== true) {
 
 require 'includes/conexao.php';
 
+// Categorias para a lista de seleção do formulário
+$categorias = $pdo->query('SELECT id, nome FROM categorias ORDER BY ordem, id')->fetchAll();
+$idsCategorias = array_column($categorias, 'id');
+
 $erro = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nome = trim($_POST['nome'] ?? '');
     $preco = !empty($_POST['preco']) ? str_replace(',', '.', $_POST['preco']) : null;
-    $categoria = trim($_POST['categoria'] ?? '');
+    $categoria = (int) ($_POST['categoria_id'] ?? 0);
     $cores = trim($_POST['cores'] ?? '');
     $opcoes = trim($_POST['opcoes'] ?? '');
 
     // Processamento do upload da imagem
-    if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK) {
+    if (!in_array($categoria, $idsCategorias)) {
+        $erro = "Escolha uma categoria válida.";
+    } elseif (isset($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK) {
         $extensao = strtolower(pathinfo($_FILES['imagem']['name'], PATHINFO_EXTENSION));
         $permitidas = ['jpg', 'jpeg', 'png', 'webp'];
 
@@ -26,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $caminho_banco = 'img/' . $nome_arquivo;
 
             if (move_uploaded_file($_FILES['imagem']['tmp_name'], $destino)) {
-                $sql = "INSERT INTO produtos (nome, imagem, preco, cores, opcoes, categoria, ativo) VALUES (?, ?, ?, ?, ?, ?, 1)";
+                $sql = "INSERT INTO produtos (nome, imagem, preco, cores, opcoes, categoria_id, ativo) VALUES (?, ?, ?, ?, ?, ?, 1)";
                 $stmt = $pdo->prepare($sql);
                 $stmt->execute([$nome, $caminho_banco, $preco, $cores, $opcoes, $categoria]);
 
@@ -59,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <p class="admin_form_erro"><?= $erro ?></p>
         <?php endif; ?>
 
-        <form action="cadastrar_produto.php" method="POST" enctype="multipart/form-data" class="admin_form">
+        <form action="admin_cadastrar_produto.php" method="POST" enctype="multipart/form-data" class="admin_form">
             <div class="admin_campo">
                 <label for="nome">Nome do Produto:</label>
                 <input type="text" id="nome" name="nome" class="admin_input" required>
@@ -71,8 +77,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
 
             <div class="admin_campo">
-                <label for="categoria">Categoria (ex: Chaveiro, Boneco):</label>
-                <input type="text" id="categoria" name="categoria" class="admin_input" required>
+                <label for="categoria_id">Categoria:</label>
+                <select id="categoria_id" name="categoria_id" class="admin_input" required>
+                    <option value="">Selecione...</option>
+                    <?php foreach ($categorias as $c): ?>
+                    <option value="<?= $c['id'] ?>"><?= e($c['nome']) ?></option>
+                    <?php endforeach; ?>
+                </select>
             </div>
 
             <div class="admin_campo">

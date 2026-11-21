@@ -1,7 +1,7 @@
 <?php
 require 'includes/conexao.php';
 
-$categorias = $pdo->query('SELECT nome, imagem FROM categorias ORDER BY ordem, id')->fetchAll();
+$categorias = $pdo->query('SELECT id, nome, imagem FROM categorias ORDER BY ordem, id')->fetchAll();
 
 require 'includes/cabecalho.php';
 ?>
@@ -18,7 +18,7 @@ require 'includes/cabecalho.php';
    <?php foreach ($categorias as $categoria): ?>
 <div class="cards">
     <!-- Link principal que engloba a imagem e o texto do card -->
-    <a class="inf_txt" href="catalogo.php?categoria=<?php echo urlencode($categoria['nome']); ?>">
+    <a class="inf_txt" href="catalogo.php?categoria=<?= (int) $categoria['id'] ?>">
         <img class="img" src="<?php echo e($categoria['imagem']); ?>" alt="<?php echo e($categoria['nome']); ?>">
         <p class="cat_txt"><?php echo e($categoria['nome']); ?></p>
     </a>

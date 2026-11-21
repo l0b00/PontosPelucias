@@ -10,7 +10,7 @@ if (!isset($_SESSION['is_admin']) || $_SESSION['is_admin'] !== true) {
 require 'includes/conexao.php';
 
 // Busca todos os produtos do banco de dados ordenados por ID
-$produtos = $pdo->query('SELECT * FROM produtos ORDER BY id DESC')->fetchAll();
+$produtos = $pdo->query('SELECT p.*, c.nome AS categoria FROM produtos p JOIN categorias c ON c.id = p.categoria_id ORDER BY p.id DESC')->fetchAll();
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

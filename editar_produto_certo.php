@@ -7,6 +7,10 @@ if (!isset($_SESSION['is_admin']) || $_SESSION['is_admin'] !== true) {
 
 require 'includes/conexao.php';
 
+// Categorias para a lista de seleção do formulário
+$categorias = $pdo->query('SELECT id, nome FROM categorias ORDER BY ordem, id')->fetchAll();
+$idsCategorias = array_column($categorias, 'id');
+
 $id = (int) ($_GET['id'] ?? 0);
 $stmt = $pdo->prepare('SELECT * FROM produtos WHERE id = ?');
 $stmt->execute([$id]);
@@ -20,13 +24,17 @@ $erro = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nome = trim($_POST['nome'] ?? '');
     $preco = !empty($_POST['preco']) ? str_replace(',', '.', $_POST['preco']) : null;
-    $categoria = trim($_POST['categoria'] ?? '');
+    $categoria = (int) ($_POST['categoria_id'] ?? 0);
     $cores = trim($_POST['cores'] ?? '');
     $opcoes = trim($_POST['opcoes'] ?? '');
     $caminho_banco = $produto['imagem']; // Mantém a imagem antiga por padrão
 
+    if (!in_array($categoria, $idsCategorias)) {
+        $erro = "Escolha uma categoria válida.";
+    }
+
     // Se uma nova imagem foi enviada, substitui (só aceita formatos de imagem)
-    if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK) {
+    if ($erro === '' && isset($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK) {
         $extensao = strtolower(pathinfo($_FILES['imagem']['name'], PATHINFO_EXTENSION));
         $permitidas = ['jpg', 'jpeg', 'png', 'webp'];
 
@@ -41,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     if ($erro === '') {
-        $sql = "UPDATE produtos SET nome = ?, imagem = ?, preco = ?, cores = ?, opcoes = ?, categoria = ? WHERE id = ?";
+        $sql = "UPDATE produtos SET nome = ?, imagem = ?, preco = ?, cores = ?, opcoes = ?, categoria_id = ? WHERE id = ?";
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$nome, $caminho_banco, $preco, $cores, $opcoes, $categoria, $id]);
 
@@ -64,7 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <?php if ($erro !== ''): ?>
             <p style="color: #d9534f; font-weight: 500;"><?= e($erro) ?></p>
         <?php endif; ?>
-        <form action="editar_produto.php?id=<?= $produto['id'] ?>" method="POST" enctype="multipart/form-data" style="display: flex; flex-direction: column; gap: 15px;">
+        <form action="editar_produto_certo.php?id=<?= $produto['id'] ?>" method="POST" enctype="multipart/form-data" style="display: flex; flex-direction: column; gap: 15px;">
             <div>
                 <label>Nome:</label><br>
                 <input type="text" name="nome" value="<?= e($produto['nome']) ?>" required style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 6px;">
@@ -75,7 +83,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
             <div>
                 <label>Categoria:</label><br>
-                <input type="text" name="categoria" value="<?= e($produto['categoria']) ?>" required style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 6px;">
+                <select name="categoria_id" required style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 6px;">
+                    <?php foreach ($categorias as $c): ?>
+                    <option value="<?= $c['id'] ?>" <?= $c['id'] == $produto['categoria_id'] ? 'selected' : '' ?>><?= e($c['nome']) ?></option>
+                    <?php endforeach; ?>
+                </select>
             </div>
             <div>
                 <label>Cores:</label><br>

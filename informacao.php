@@ -3,7 +3,7 @@ require 'includes/conexao.php';
 
 // Pega o ID que veio na URL (ex: ?id=1) e busca o produto no banco
 $id = (int) ($_GET['id'] ?? 0);
-$consulta = $pdo->prepare('SELECT * FROM produtos WHERE id = ? AND ativo = 1');
+$consulta = $pdo->prepare('SELECT p.*, c.nome AS categoria FROM produtos p JOIN categorias c ON c.id = p.categoria_id WHERE p.id = ? AND p.ativo = 1');
 $consulta->execute([$id]);
 $produto = $consulta->fetch();
 
