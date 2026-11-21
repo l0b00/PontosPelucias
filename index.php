@@ -17,9 +17,6 @@ require 'includes/cabecalho.php';
     <div class="container">
    <?php foreach ($categorias as $categoria): ?>
 <div class="cards">
-    <!-- Link extra ou texto informativo separado -->
-    <a class="inf_txt" href="catalogo.php?categoria=<?php echo urlencode($categoria['nome']); ?>"></a>
-
     <!-- Link principal que engloba a imagem e o texto do card -->
     <a class="inf_txt" href="catalogo.php?categoria=<?php echo urlencode($categoria['nome']); ?>">
         <img class="img" src="<?php echo e($categoria['imagem']); ?>" alt="<?php echo e($categoria['nome']); ?>">

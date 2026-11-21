@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $permitidas = ['jpg', 'jpeg', 'png', 'webp'];
 
         if (in_array($extensao, $permitidas)) {
-            $destino = '../img/' . uniqid('prod_') . '.' . $extensao;
+            $destino = 'img/' . uniqid('prod_') . '.' . $extensao;
             if (move_uploaded_file($_FILES['imagem']['tmp_name'], $destino)) {
                 $caminho_banco = 'img/' . basename($destino);
             }

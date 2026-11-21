@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['is_admin']) || $_SESSION['is_admin'] !== true) {
-    header('Location: login_admin.php');
+    header('Location: login_admin_certo.php');
     exit;
 }
 
@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if (in_array($extensao, $permitidas)) {
             $nome_arquivo = uniqid('prod_') . '.' . $extensao;
-            $destino = '../img/' . $nome_arquivo;
+            $destino = 'img/' . $nome_arquivo;
             $caminho_banco = 'img/' . $nome_arquivo;
 
             if (move_uploaded_file($_FILES['imagem']['tmp_name'], $destino)) {
