@@ -869,3 +869,124 @@ box-shadow: 0px 10px 20px rgba(114, 35, 62, 0.25);
     margin-top: -5px;
     margin-bottom: 20px;
 }
+
+
+/* PAINEL ADMINISTRATIVO */
+.admin_container {
+    max-width: 950px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: white;
+    border-radius: 30px;
+    box-shadow: 0px 5px 10px rgba(244, 130, 170, 0.25);
+}
+
+.admin_topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.admin_titulo {
+    font-family: 'DynaPuff', cursive;
+    font-size: 24px;
+    margin: 0;
+    color: rgb(244, 130, 170);
+}
+
+.admin_acoes_topo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.btn_novo_produto {
+    background-color: rgb(244, 130, 170);
+    color: white;
+    padding: 10px 18px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-family: 'DynaPuff', cursive;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.btn_novo_produto:hover {
+    background-color: rgb(225, 100, 145);
+    transform: scale(1.03);
+}
+
+.admin_divisor {
+    border: 0;
+    border-top: 1px solid rgb(255, 228, 237);
+    margin-bottom: 20px;
+}
+
+.admin_tabela_wrap {
+    overflow-x: auto;
+}
+
+.admin_tabela {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-family: 'Fredoka', cursive;
+}
+
+.admin_tabela thead tr {
+    border-bottom: 2px solid rgb(255, 214, 228);
+    font-family: 'DynaPuff', cursive;
+    font-size: 14px;
+    color: rgb(170, 91, 120);
+}
+
+.admin_tabela th,
+.admin_tabela td {
+    padding: 12px 10px;
+    vertical-align: middle;
+}
+
+.admin_tabela tbody tr {
+    border-bottom: 1px solid rgb(255, 244, 248);
+}
+
+.admin_img {
+    width: 55px;
+    height: 55px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.admin_nome {
+    font-weight: 600;
+    color: rgb(170, 91, 120);
+}
+
+.admin_acoes_col {
+    text-align: center;
+    white-space: nowrap;
+}
+
+.acao_editar {
+    color: rgb(43, 122, 120);
+    text-decoration: none;
+    font-weight: bold;
+    margin-right: 12px;
+}
+
+.acao_editar:hover {
+    text-decoration: underline;
+}
+
+.acao_excluir {
+    color: rgb(217, 83, 79);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.acao_excluir:hover {
+    text-decoration: underline;
+}
