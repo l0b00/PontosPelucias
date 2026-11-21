@@ -29,6 +29,7 @@ $produtos = $pdo->query('SELECT p.*, c.nome AS categoria FROM produtos p JOIN ca
             <div class="admin_acoes_topo">
                 <a href="admin_cadastrar_produto.php" class="btn_novo_produto">+ Novo Produto</a>
                 <a href="index.php" class="link">Ver Site</a>
+                <a href="logout.php" class="link">Sair</a>
             </div>
         </div>
 

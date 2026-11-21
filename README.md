@@ -45,7 +45,7 @@ http://localhost/PontosPelucias/
 
 Acesso ao painel administrativo:
 
-http://localhost/PontosPelucias/admin/login_admin.php
+http://localhost/PontosPelucias/login_admin_certo.php
 
 Para acessar o painel, informe as credenciais de uma conta de administrador cadastrada na tabela administradores do banco de dados.
 
