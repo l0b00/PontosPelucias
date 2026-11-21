@@ -105,21 +105,9 @@ $redes = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <?php endforeach; ?>
 
         </section>
-
-        <section class="contato_final">
-
-            <h3>Feito com carinho! ♡</h3>
-
-            <p>
-                Cada peça é feita à mão com muito amor.
-                Obrigada por apoiar meu trabalho!
-            </p>
-
-            <span>♡ Pontos e Pelúcias by Carol ♡</span>
-
-        </section>
-
     </main>
+    
+<?php include 'rodape.php';?>
 
 </body>
 </html>
