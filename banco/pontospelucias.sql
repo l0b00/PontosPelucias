@@ -90,12 +90,12 @@ INSERT INTO contatos_redes
 VALUES
 ('WhatsApp', 'img/whatsapp.png',
  'Faça seu pedido ou tire dúvidas!',
- 'whatsapp', 'https://wa.me',
+ 'whatsapp', 'https://wa.me/5519994520945',
  'Chamar no WhatsApp', 1, 1),
 
 ('Instagram', 'img/instagram.png',
  'Acompanhe as novidades e bastidores.',
- 'instagram', 'https://instagram.com',
+ 'instagram', 'https://instagram.com/pontosepelucias/',
  'Seguir no Instagram', 2, 1),
 
 ('TikTok', 'img/tiktok.png',
