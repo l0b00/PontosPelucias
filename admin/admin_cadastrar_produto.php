@@ -5,7 +5,7 @@ if (!isset($_SESSION['is_admin']) || $_SESSION['is_admin'] !== true) {
     exit;
 }
 
-require 'includes/conexao.php';
+require __DIR__ . '/../includes/conexao.php';
 
 // Categorias para a lista de seleção do formulário
 $categorias = $pdo->query('SELECT id, nome FROM categorias ORDER BY ordem, id')->fetchAll();
@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if (in_array($extensao, $permitidas)) {
             $nome_arquivo = uniqid('prod_') . '.' . $extensao;
-            $destino = 'img/' . $nome_arquivo;
+            $destino = __DIR__ . '/../img/' . $nome_arquivo;
             $caminho_banco = 'img/' . $nome_arquivo;
 
             if (move_uploaded_file($_FILES['imagem']['tmp_name'], $destino)) {
@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <title>Cadastrar Produto - Admin</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
     <link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&family=Fredoka:wght@300..700&display=swap" rel="stylesheet">
 </head>
 <body>

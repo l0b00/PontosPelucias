@@ -7,7 +7,7 @@ if (!isset($_SESSION['is_admin']) || $_SESSION['is_admin'] !== true) {
 }
 
 // Sobe um nível para acessar a conexão na pasta anterior
-require 'includes/conexao.php';
+require __DIR__ . '/../includes/conexao.php';
 
 // Busca todos os produtos do banco de dados ordenados por ID
 $produtos = $pdo->query('SELECT p.*, c.nome AS categoria FROM produtos p JOIN categorias c ON c.id = p.categoria_id ORDER BY p.id DESC')->fetchAll();
@@ -18,7 +18,7 @@ $produtos = $pdo->query('SELECT p.*, c.nome AS categoria FROM produtos p JOIN ca
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Painel Administrativo - Pontos e Pelúcias</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
     <link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&family=Fredoka:wght@300..700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -28,7 +28,7 @@ $produtos = $pdo->query('SELECT p.*, c.nome AS categoria FROM produtos p JOIN ca
             <h2 class="admin_titulo">Painel Administrativo ♡</h2>
             <div class="admin_acoes_topo">
                 <a href="admin_cadastrar_produto.php" class="btn_novo_produto">+ Novo Produto</a>
-                <a href="index.php" class="link">Ver Site</a>
+                <a href="../index.php" class="link">Ver Site</a>
                 <a href="logout.php" class="link">Sair</a>
             </div>
         </div>
