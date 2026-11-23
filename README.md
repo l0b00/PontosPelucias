@@ -3,6 +3,12 @@
 
 Desenvolver um site para divulgação e comercialização de pelúcias artesanais de crochê, facilitando o acesso dos clientes a informações sobre os produtos, como disponibilidade, preços e opções disponíveis. O site também possibilita que os clientes entrem em contato para realizar pedidos, contribuindo para ampliar as oportunidades de venda e divulgação da loja.
 
+## Link para acesso ao site:
+http://pontospelucias.wuaze.com/
+
+## Link para acesso ao painel administrativo:
+http://pontospelucias.wuaze.com/login_admin_certo.php
+
 ## Integrantes
 Aline Betti Pedro Bom — RA: 202610206
 
