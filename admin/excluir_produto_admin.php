@@ -5,7 +5,7 @@ if (!isset($_SESSION['is_admin']) || $_SESSION['is_admin'] !== true) {
     exit;
 }
 
-require 'includes/conexao.php';
+require __DIR__ . '/../includes/conexao.php';
 
 $id = (int) ($_GET['id'] ?? 0);
 if ($id > 0) {

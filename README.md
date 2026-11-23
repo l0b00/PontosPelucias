@@ -50,13 +50,23 @@ http://localhost/PontosPelucias/
 
 Acesso ao painel administrativo:
 
-http://localhost/PontosPelucias/admin/login_admin.php
+http://localhost/PontosPelucias/admin/login_admin_certo.php
 
 Para acessar o painel, informe as credenciais de uma conta de administrador cadastrada na tabela administradores do banco de dados.
 
 O painel administrativo permite cadastrar, editar e excluir produtos. Todas as alterações são armazenadas diretamente no banco de dados MariaDB e refletidas no catálogo da loja.
 
 Observação: O XAMPP deve permanecer em execução durante a utilização local do sistema, mantendo os serviços Apache e MySQL ativos.
+
+### 4. Hospedagem (InfinityFree)
+1. Crie a conta e o site no painel do InfinityFree.
+2. Em **MySQL Databases**, crie um banco. Anote o hostname, o nome do banco, o usuário e a senha.
+3. Abra o phpMyAdmin pelo painel, selecione o banco criado e importe o arquivo `banco/hospedagem.sql` (não use o `pontospelucias.sql`, ele tenta criar o banco e dá erro na hospedagem).
+4. Copie `includes/config.exemplo.php` para `includes/config.php` e preencha com os dados do passo 2. Esse arquivo não vai para o GitHub.
+5. Envie os arquivos para a pasta `htdocs` pelo gerenciador de arquivos ou FTP (FileZilla). Não envie a pasta `.git`.
+6. **Antes de publicar, troque a senha do admin** (gere o hash com `password_hash` e atualize a tabela `administradores`).
+
+No XAMPP nada muda: sem o `config.php`, o site continua usando `localhost` com `root` sem senha.
 
 ## Principais funcionalidades
 **- Visualização do catálogo:** permite que os clientes naveguem pelos produtos disponíveis na loja.
