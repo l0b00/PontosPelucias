@@ -1,0 +1,2 @@
+# Pasta só usada pelo PHP: bloqueia acesso pelo navegador
+Require all denied

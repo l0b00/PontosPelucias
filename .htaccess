@@ -1,0 +1,8 @@
+# Não lista o conteúdo das pastas
+Options -Indexes
+
+# Bloqueia acesso direto a arquivos que não são do site
+<FilesMatch "\.(sql|md)$">
+    Require all denied
+</FilesMatch>
+RedirectMatch 404 /\.git

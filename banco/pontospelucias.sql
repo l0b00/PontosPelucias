@@ -1,4 +1,5 @@
 -- Banco de dados do site Pontos e Pelúcias
+-- Ao alterar este arquivo, atualize também banco/hospedagem.sql (versão para a hospedagem).
 -- Importar pelo phpMyAdmin (aba "Importar") ou pelo terminal:
 --   C:\xampp\mysql\bin\mysql.exe -u root < banco/pontospelucias.sql
 -- Rodar de novo recria a tabela do zero com os dados abaixo.
