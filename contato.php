@@ -8,56 +8,10 @@ $sql = "SELECT * FROM contatos_redes
 
 $stmt = $pdo->query($sql);
 $redes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+$titulo = 'Contato - Pontos e Pelúcias';
+require 'includes/cabecalho.php';
 ?>
-
-<!DOCTYPE html>
-<html lang="pt-br">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Contato - Pontos e Pelúcias</title>
-
-    <link rel="stylesheet" href="style.css">
-
-    <link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap" rel="stylesheet">
-</head>
-
-<body>
-
-    <header class="menu_principal">
-        <div class="cabeçalho">
-
-            <details class="menu">
-                <summary class="menu_botao">
-                    <span class="hamburguer">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </span>
-                    <span class="menu_txt">Menu</span>
-                </summary>
-
-                <ul class="topico">
-                    <li><a class="link" href="index.php">Início</a></li>
-                    <li><a class="link" href="catalogo.php">Catálogo</a></li>
-                    <li><a class="link" href="contato.php">Contato</a></li>
-                </ul>
-            </details>
-
-            <nav class="pag_inicial">
-                <h1>
-                    <a class="link" href="index.php">
-                        Pontos e Pelúcias
-                    </a>
-                </h1>
-                <span class="subtitulo">by Carol</span>
-            </nav>
-
-        </div>
-    </header>
 
     <main class="contato_principal">
 
