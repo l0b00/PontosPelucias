@@ -91,6 +91,10 @@ Para o funcionamento do projeto, são necessários:
 
 **- Conexão com a internet:** necessária para acessar recursos externos e canais de contato, como WhatsApp e redes sociais.
 
+## Link do repositório no GitHub:
+
+https://github.com/l0b00/PontosPelucias.git
+
 ## Imagens
 
 ### Página inicial
